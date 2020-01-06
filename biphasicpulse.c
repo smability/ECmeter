@@ -24,28 +24,28 @@ void ControlAON()
   {
   digitalWrite (CONTROLA, HIGH);  // turn CONTROL A ON
   delay(1); // give time to power up (mosfet)
-  }  // end of powerONSensor
+  }
 
 // Control A "OFF"
 void ControlAOFF()
   {
   digitalWrite (CONTROLA, LOW);  // turn CONTROL A OFF
   delay(1); // give time to power down (mosfet)
-  }  // end of powerONSensor
+  }
 
 // Control B "ON"
 void ControlBON()
   {
   digitalWrite (CONTROLB, HIGH);  // turn CONTROL B ON
   delay(1); // give time to power up (mosfet)
-  }  // end of powerONSensor
+  }
 
 // Control B "OFF"
 void ControlBOFF()
   {
   digitalWrite (CONTROLB, LOW);  // turn CONTROL B ON
   delay(1); // give time to power down (mosfet)
-  }  // end of powerONSensor
+  }
 
   
 void loop() {
