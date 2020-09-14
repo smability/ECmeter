@@ -25,10 +25,12 @@ void pins_init()
 
 }
 
+//analog readings
 int analogPin0 = A0;
 int analogPin1 = A1;
 int analogPin3 = A3;
 
+//Temperature and Compensation
 float Celcius = 0.0;        //Water temperature in ºC
 float a = 0.019;           //Compensation factor in uS/cm/ºC
 
@@ -36,8 +38,7 @@ float a = 0.019;           //Compensation factor in uS/cm/ºC
 float distance = 1.2;     //in cm
 float area = 0.9;         //in cm2 (total area of the two electrodes?)
 
-//Input Frequency
-//int Frequency = 100;    //in Hz
+//Water Resistance variable
 float Vdrop_Water;
 float WaterResistance;
 float WaterConductivity;
@@ -165,6 +166,20 @@ void ControlBOFF()
   //delay(1); // give time to power down (mosfet)
   }
 
+void Report_values(){
+  Serial.print("           ");
+  Serial.print( temperature(),2);
+  Serial.print(" ºC           ");
+  Serial.print(WaterResistance);
+  Serial.print(" Ω            ");
+  Serial.print(RawConduc(WaterResistance)*1000000,2);
+  Serial.print(" µs/cm        ");
+  Serial.print((WaterConductivity)*1000000,2);
+  Serial.print(" µs/cm        ");
+  Serial.println();
+}
+
+
 /* Main loop*/
 
 void loop(void)
@@ -204,7 +219,9 @@ void loop(void)
     WaterConductivity = compConduc(RawConduc(WaterResistance), temperature());
   }
   
+  Report_values();
   //Report values
+  /*
   Serial.print("           ");
   Serial.print( temperature(),2);
   Serial.print(" ºC           ");
@@ -215,7 +232,7 @@ void loop(void)
   Serial.print((WaterConductivity)*1000000,2);
   Serial.print(" µs/cm        ");
   Serial.println();
-  
+  */
 }
 
 /* RMS value
