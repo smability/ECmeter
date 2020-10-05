@@ -30,6 +30,8 @@ DallasTemperature sensors(&oneWire);
 // Analog Port
 #define LEVEL_SENSOR A5
 
+unsigned long InitialTime;
+
 void setup()  {
   
     Serial.begin(57600);
